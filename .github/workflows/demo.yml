@@ -10,4 +10,7 @@ jobs:
         run: echo "Hello, World!"
       - name: dockerlogin
         run: docker login -u ramalakshmi79 -p dckr_pat_nU7IyOT8C6mnnwOH9KNS9_Wi4IY 
-        
+      - name: dockerbuild
+        run: docker build -t ramalakshmi79/demo:nginx-workflow .
+      - name: dockerimage-push
+        run: docker push ramalakshmi79/demo:nginx-workflow
