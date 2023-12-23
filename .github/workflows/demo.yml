@@ -8,3 +8,6 @@ jobs:
         uses: actions/checkout@v4.1.1
       - name: Say Hello
         run: echo "Hello, World!"
+      - name: dockerlogin
+        run: docker login -u ramalakshmi79 -p dckr_pat_nU7IyOT8C6mnnwOH9KNS9_Wi4IY 
+        
