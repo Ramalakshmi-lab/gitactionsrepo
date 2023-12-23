@@ -3,7 +3,7 @@ name: Python Workflow
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test-and-run:
