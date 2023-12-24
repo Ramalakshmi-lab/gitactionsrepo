@@ -2,7 +2,7 @@ name: Newwork-task3new
 on: [push]
 jobs:
   CI_CD_PIPELINE:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: action/checkout@v4.1.4
