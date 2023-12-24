@@ -15,7 +15,7 @@ jobs:
         uses: docker/build-push-action@v5
         with: 
           push: true
-          tag: ramalakshmi79/demo:newnginx-image
+          tags: ramalakshmi79/demo:newnginx-image
       - name: Ec2 connect
         env:
           PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
