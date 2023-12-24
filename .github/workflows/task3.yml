@@ -1,7 +1,7 @@
 name: Newwork-task3
 on: [push]
 jobs:
-  CI/CD PIPELINE:
+  CI-CD_PIPELINE:
     runs-on: ubuntu:latest
     steps:
       - name: Checkout
