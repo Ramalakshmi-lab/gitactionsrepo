@@ -23,7 +23,7 @@ jobs:
           USER_NAME: ${{secrets.EC2_USERNAME}}
         run: |
          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-         ssh -o SrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             sudo docker login -u ramalakshmi79 -p dckr_pat_nU7IyOT8C6mnnwOH9KNS9_Wi4IY
             sudo docker pull  ramalakshmi79/demo:newnginx-image
             sudo docker run -d -p 889:80 ramalakshmi79/demo:newnginx-image
