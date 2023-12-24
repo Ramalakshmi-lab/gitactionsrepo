@@ -25,7 +25,8 @@ jobs:
          echo "$PRIVATE_KEY" > private_key.pem 
          chmod 400 private_key.pem
          ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-            sudo docker login -u ramalakshmi79 -p dckr_pat_nU7IyOT8C6mnnwOH9KNS9_Wi4IY
-            sudo docker stop  app
-            sudo docker run -d -p 80:80 --name app ramalakshmi79/demo:newnginx-image 
+             docker login -u ramalakshmi79 -p dckr_pat_nU7IyOT8C6mnnwOH9KNS9_Wi4IY
+             docker stop  app
+             docker rm app
+             docker run -d -p 80:80 --name app ramalakshmi79/demo:newnginx-image 
             '
