@@ -1,0 +1,16 @@
+name: "newone"
+on: [push]
+job:
+  first_job:
+    runs-on: ubuntu-latest
+    - name: checkout-to-gihub
+      uses: actions/checkout@v4.1.1
+    - name: dockerlogin 
+      run: docker login -u {{secrets.DOCKER_USERNAME}} -p {{secrets.DOCKER_TOKEN}} 
+    - name: docker-build
+      run: docker build -t ramalakshmi79/demo:latest-image .
+    - name: docker push
+      run: docker push ramalakshmi79/demo:latest-image
+      
+    
+    
