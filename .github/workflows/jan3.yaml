@@ -20,7 +20,7 @@ jobs:
         env:
           PRIVATE_KEY: ${{secrets.EC2_PEMKEY}}
           HOSTNAME: ${{secrets.EC2_HOSTNAME}}
-          USER_NAME: ${{SECRETS.EC2_USERNAME}}
+          USER_NAME: ${{SECRETS.EC2_USER_NAME}}
         run: |
           echo "$PRIVATE_KEY">private_key.pem
           chmod 400 private_key.pem
