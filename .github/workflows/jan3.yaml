@@ -20,9 +20,9 @@ jobs:
     steps:
       - name: ec2connect
         env:
-          PRIVATE_KEY: ${{secrets.EC2_PEMKEY}}
+          PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
           HOSTNAME: ${{secrets.EC2_HOSTNAME}}
-          USER_NAME: ${{secrets.EC2_USER_NAME}}
+          USER_NAME: ${{secrets.EC2_USERNAME}}
         run: |
           echo "$PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
