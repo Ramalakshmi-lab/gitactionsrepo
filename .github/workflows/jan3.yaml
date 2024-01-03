@@ -1,0 +1,15 @@
+name: "jan3"
+on: [push]
+jobs:
+  firts-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4.1.1
+      - name: docker login
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
+      - name: docker build
+        run: docker build -t ramalakshmi79/demo:jan3-image .
+      - name: docker-push
+        run: docker push ramalakshmi79/demo:jan3-image
+
