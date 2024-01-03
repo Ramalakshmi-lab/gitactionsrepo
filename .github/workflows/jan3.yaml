@@ -12,4 +12,18 @@ jobs:
         run: docker build -t ramalakshmi79/demo:jan3-image .
       - name: docker-push
         run: docker push ramalakshmi79/demo:jan3-image
-
+  second-job: 
+    runs-on: ubuntu-latest
+    needs: first-job
+    steps:
+      - name: ec2connect
+        env:
+          PRIVATE_KEY: ${{secrets.EC2_PEMKEY}}
+          HOSTNAME: ${{secrets.EC2_HOSTNAME}}
+          USER_NAME: ${{SECRETS.EC2_USERNAME}}
+        run: |
+          echo "$PRIVATE_KEY">private_key.pem
+          chmod 400 private_key.pem
+          ssh StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@{HOSTNAME} '
+          docker run -d -p 88:80 --name rama ramalakshmi79/demo:jan3-image 
+          '
