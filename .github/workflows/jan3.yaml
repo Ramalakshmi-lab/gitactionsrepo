@@ -27,7 +27,7 @@ jobs:
          ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
          docker stop sam
          docker rm sam
-         docker rmi ramalakshmi79/demo:jan3-image
+         docker rmi -f  ramalakshmi79/demo:jan3-image
          docker run -d -p 88:80  --name sam ramalakshmi79/demo:jan3-image
          '
 
