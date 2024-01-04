@@ -25,5 +25,5 @@ jobs:
          echo "$PRIVATE_KEY" > private_key.pem 
          chmod 400 private_key.pem
          ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-         echo "satish"
+         docker run -d -p 88:80 ramalakshmi79/demo:jan3-image
          '
