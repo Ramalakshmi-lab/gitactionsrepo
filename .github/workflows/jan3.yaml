@@ -9,7 +9,7 @@ jobs:
       - name: docker login
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
       - name: docker build
-        run: docker build -t ramalakshmi79/demo:jan3-image .
+        run: docker build -t ramalakshmi79/demo:jan3-image . 
       - name: docker-push
         run: docker push ramalakshmi79/demo:jan3-image
   second-job: 
@@ -30,4 +30,5 @@ jobs:
          docker rmi -f  ramalakshmi79/demo:jan3-image
          docker run -d -p 88:80  --name sam ramalakshmi79/demo:jan3-image
          '
+  
 
