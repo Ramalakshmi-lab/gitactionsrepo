@@ -12,3 +12,15 @@ jobs:
         run: docker build -t ramalakshmi79/demo:demo2-image .
       - name: pushing
         run: docker push ramalakshmi79/demo:demo2-image
+      - name: ec2connect
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
+          HOSTNAME: ${{secrets.EC2_HOSTNAME}}
+          USER_NAME: ${{secrets.EC2_USERNAME}}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 400 private_key.pem
+          ssh StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
+           docker pull ramalakshmi79/demo:demo2-image
+           docker run -d -p 899:80 ramalakshmi79/demo:demo2-image
+           '
