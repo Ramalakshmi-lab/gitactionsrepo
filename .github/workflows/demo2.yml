@@ -22,7 +22,7 @@ jobs:
           chmod 400 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
            docker pull ramalakshmi79/demo:demo2-image
-           docker run -d -p 892:80 --name rambo ramalakshmi79/demo:demo2-image 
+           docker run -d -p 893:80 --name rambo ramalakshmi79/demo:demo2-image 
            '
 
            
