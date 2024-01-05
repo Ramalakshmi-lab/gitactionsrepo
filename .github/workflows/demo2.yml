@@ -24,7 +24,7 @@ jobs:
            docker pull ramalakshmi79/demo:demo2-image
            docker stop names
            dockdr rm names
-           docker run -d -p 892:80 --name names ramalakshmi79/demo:demo2-image
+           docker run -d -p 892:80 --name names ramalakshmi79/demo:demo2-image 
            '
 
            
