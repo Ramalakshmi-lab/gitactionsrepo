@@ -9,6 +9,6 @@ jobs:
       - name: dockerlogin 
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
       - name: imagebuild
-        run: docker build -t ramalakshmi79/demo:demo2-image
+        run: docker build -t ramalakshmi79/demo:demo2-image .
       - name: pushing
         run: docker push ramalakshmi79/demo:demo2-image
