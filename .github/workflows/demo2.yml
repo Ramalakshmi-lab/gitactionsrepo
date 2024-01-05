@@ -24,6 +24,7 @@ jobs:
            docker pull ramalakshmi79/demo:demo2-image
            docker stop rajiiiii
            docker rm rajiiiii
+           docker rmi -f ramalakshmi79/demo:demo2-image
            docker run -d -p 894:80 --name rajiiiii ramalakshmi79/demo:demo2-image 
            '
 
