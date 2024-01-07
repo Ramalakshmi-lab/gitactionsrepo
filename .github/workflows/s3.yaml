@@ -6,6 +6,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: print
-        run:  echo "anu"
-            
+      - name: dockerhublogin
+        run: docker run -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
+      - name: imagebuild
+        run: docker build -t ramalakshmi79/demo:anu .
+      - name: pushing image
+        run: docker push ramalakshmi79/demo:anu
