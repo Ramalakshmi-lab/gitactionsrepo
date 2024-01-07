@@ -18,7 +18,7 @@ jobs:
           HOSTNAME: ${{secrets.EC2_HOSTNAME}}
           USER_NAME: ${{secrets.EC2_USERNAME}} 
         run: |
-          echo "$PRIVATE_KEY" > private_key.pem
+          echo "$PRIVATE_KEY" > private_key.pem  
           chmod 600 private_key.pem   
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
             docker pull ramalakshmi79/demo:anu
