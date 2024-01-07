@@ -1,31 +1,31 @@
-# name: DEMO2
-# on: [push]
-# jobs:
-#   new-job:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: checkout-gitrepo
-#         uses: actions/checkout@v4.1.1
-#       - name: dockerlogin 
-#         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
-#       - name: imagebuild
-#         run: docker build -t ramalakshmi79/demo:demo2-image .
-#       - name: pushing
-#         run: docker push ramalakshmi79/demo:demo2-image
-#       - name: ec2connect
-#         env:
-#           PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
-#           HOSTNAME: ${{secrets.EC2_HOSTNAME}}
-#           USER_NAME: ${{secrets.EC2_USERNAME}}
-#         run: |
-#           echo "$PRIVATE_KEY" > private_key.pem
-#           chmod 400 private_key.pem
-#           ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-#            docker pull ramalakshmi79/demo:demo2-image
-#            docker stop rajiiiii
-#            docker rm rajiiiii
-#            docker rmi -f ramalakshmi79/demo:demo2-image
-#            docker run -d -p 894:80 --name rajiiiii ramalakshmi79/demo:demo2-image 
-#            '
+name: DEMO2
+on: [push]
+jobs:
+  new-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout-gitrepo
+        uses: actions/checkout@v4.1.1
+      - name: dockerlogin 
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
+      - name: imagebuild
+        run: docker build -t ramalakshmi79/demo:demo2-image .
+      - name: pushing
+        run: docker push ramalakshmi79/demo:demo2-image
+      - name: ec2connect
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
+          HOSTNAME: ${{secrets.EC2_HOSTNAME}}
+          USER_NAME: ${{secrets.EC2_USERNAME}}
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 400 private_key.pem
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
+           docker pull ramalakshmi79/demo:demo2-image
+           docker stop rajiiiii
+           docker rm rajiiiii
+           docker rmi -f ramalakshmi79/demo:demo2-image
+           docker run -d -p 894:80 --name rajiiiii ramalakshmi79/demo:demo2-image 
+           '
 
            
