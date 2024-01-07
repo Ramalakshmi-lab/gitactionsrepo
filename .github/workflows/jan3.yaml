@@ -1,34 +1,33 @@
-name: "jan3"
-on: [push]
-jobs:
-  first-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4.1.1
-      - name: docker login
-        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
-      - name: docker build
-        run: docker build -t ramalakshmi79/demo:jan3-image . 
-      - name: docker-push
-        run: docker push ramalakshmi79/demo:jan3-image
-  second-job: 
-    runs-on: ubuntu-latest
-    needs: first-job
-    steps:
-      - name: ec2connect
-        env:
-          PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
-          HOSTNAME: ${{secrets.EC2_HOSTNAME}}
-          USER_NAME: ${{SECRETS.EC2_USERNAME}}
-        run: |
-         echo "$PRIVATE_KEY" > private_key.pem 
-         chmod 400 private_key.pem
-         ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
-         docker stop sam
-         docker rm sam
-         docker rmi -f  ramalakshmi79/demo:jan3-image
-         docker run -d -p 88:80  --name sam ramalakshmi79/demo:jan3-image
-         '
+# name: "jan3"
+# on: [push]
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: checkout
+#         uses: actions/checkout@v4.1.1
+#       - name: docker login
+#         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_TOKEN}}
+#     runs-on: ubuntu-latest
+#     needs: first-job
+#     steps:
+#       - name: ec2connect: docker build
+#         run: docker build -t ramalakshmi79/demo:jan3-image . 
+#       - name: docker-push
+#         run: docker push ramalakshmi79/demo:jan3-image
+#   second-job: 
+#         env:
+#           PRIVATE_KEY: ${{ secrets.EC2_PEMKEY }}
+#           HOSTNAME: ${{secrets.EC2_HOSTNAME}}
+#           USER_NAME: ${{SECRETS.EC2_USERNAME}}
+#         run: |
+#          echo "$PRIVATE_KEY" > private_key.pem 
+#          chmod 400 private_key.pem
+#          ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
+#          docker stop sam
+#          docker rm sam
+#          docker rmi -f  ramalakshmi79/demo:jan3-image
+#          docker run -d -p 88:80  --name sam ramalakshmi79/demo:jan3-image
+#          '
   
 

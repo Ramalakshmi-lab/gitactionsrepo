@@ -1,0 +1,11 @@
+name: Demo3anu
+on: push
+jobs: 
+  anujob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: print
+        run:  echo "anu"
+            
