@@ -24,6 +24,7 @@ jobs:
             docker pull ramalakshmi79/demo:anu
             docker stop anu1
             docker rm anu1
+            docker rmi -f ramalakshmi79/demo:anu
             docker run -d -p  891:80 --name anu1 ramalakshmi79/demo:anu
             '
 
