@@ -22,6 +22,8 @@ jobs:
           chmod 600 private_key.pem   
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER_NAME}@${HOSTNAME} '
             docker pull ramalakshmi79/demo:anu
+            docker stop anu1
+            docker rm anu1
             docker run -d -p  891:80 --name anu1 ramalakshmi79/demo:anu
             '
 
